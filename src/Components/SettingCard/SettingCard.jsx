@@ -12,10 +12,10 @@ function SettingCard(props) {
                 {props.isPlayer ? 
                     <input className={props.class} value={props.value} ></input>
                     :
-                    <div className={`nonPlayer ${props.class}`} onClick={props.handleOnClick}> {props.value} </div>
+                    <div className={`nonPlayer ${props.class}`} onClick={props.handleOnClick()}> {props.value} </div>
                 }
             </div>
-            <hr></hr>
+            <hr className="settingCardHr"></hr>
         </div>
     )
 }

@@ -23,7 +23,9 @@ class Page3 extends React.Component {
             winner: 0,
             tourWinner: 0,
             playerOneWins: 0,
-            PlayerTwoWins: 0
+            PlayerTwoWins: 0,
+            gamesCount: 0,
+            currentGame: 1,
         }
         this.getHorCount = this.getHorCount.bind(this)
         this.getVerCount = this.getVerCount.bind(this)
@@ -260,11 +262,17 @@ class Page3 extends React.Component {
         )
     }
 
+    componentDidMount(){
+        const games = localStorage.getItem('gamesCount')
+        this.setState({gamesCount: games})
+        
+    }
+
     render(){
         const { winner, tourWinner } = this.state
         return(
             <div className="pageThree">
-                <TopNavBar></TopNavBar>
+                <TopNavBar prevPagePath="/settings"></TopNavBar>
                 <div className="main">
                     <div className="boardContainer">
                         <div className="board">

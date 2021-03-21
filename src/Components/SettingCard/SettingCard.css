@@ -52,8 +52,9 @@
     border: #B1C4F9 solid 15px; 
 }
 
-.settingCard hr {
+hr.settingCardHr {
     margin: 0;
+    margin-left: 50px;
     width: 520px;
     position: absolute;
     top: 120px;
@@ -79,3 +80,10 @@
     margin-top: 10px;
 }
 
+.nonPlayer {
+    cursor: pointer;
+}
+
+button{
+    cursor: pointer;
+}
