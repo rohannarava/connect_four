@@ -1,0 +1,6 @@
+.playerCard {
+    width: 385px;
+    height: 141px;
+    display: flex;
+    margin: 5px auto;
+}

@@ -1,0 +1,22 @@
+.modalContainer {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 0;     
+    left: 0;
+    z-index: 10;
+}
+
+.modal {
+    
+    width: 610px;
+    height: 100px;
+    background: #FFFFFF;
+    box-shadow: 0px 3px 6px #00000029;
+    border: 1px solid #F7F7F7;
+    border-radius: 30px;
+    
+}

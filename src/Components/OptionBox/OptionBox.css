@@ -1,0 +1,36 @@
+.optionBox {
+    width: 340px;
+    height: 90px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    margin: 0px 15px;
+}
+
+.optionImg{
+    margin-left: 27px;
+    margin-right: 22px;
+}
+
+.optionName{
+    text-align: left;
+    font:  24px/35px Poppins !important;
+    letter-spacing: 0px;
+    color: #FFFFFF;
+}
+
+.one {
+    background: #4BABFF;
+}
+
+.two {
+    background: #4B7BFF;
+}
+
+.online {
+    background: #4B4BFF;
+}
+
+.training {
+    background: #6E4BFF;
+}
