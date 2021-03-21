@@ -3,4 +3,50 @@
     height: 141px;
     display: flex;
     margin: 5px auto;
+    align-items: center;
+}
+
+.playerName {
+    width: 146px;
+    margin-left: 10px;
+}
+
+.playerScore {
+    width: 82px;
+    text-align: center;
+}
+
+.values {
+    display: block;
+    font: 28px Poppins;
+    letter-spacing: 0px;
+    color: #424242;
+    border: none;
+    margin-top: 10px;
+}
+
+.name {
+    text-align: left;
+}
+
+.score {
+    text-align: center;
+}
+
+.playerCard label {
+    text-align: left;
+    font: 18px Poppins;
+    letter-spacing: 0px;
+    color: #424242;
+    opacity: 0.56;
+}
+
+.currentBadge {
+    margin: 5px;
+    border-radius: 50%; 
+    border: 12px solid #FFA200;
+}
+
+.currentBadge .badge {
+    margin: 0 !important;
 }

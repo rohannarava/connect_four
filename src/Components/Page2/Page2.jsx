@@ -14,15 +14,17 @@ class Page2 extends React.Component {
         this.state = {
             showWhoModal: false,
             showGamesModal: false,
-            playerOne: "Player 1",
-            playerTwo: "Player 2",
-            gamesCount: gamesCountOptions[1],
-            whoStarts: whoStartsOptions[0],
+            playerOne: localStorage.getItem("player1") || "Player 1",
+            playerTwo: localStorage.getItem("player2") || "Player 2",
+            gamesCount: localStorage.getItem("gamesCount") || gamesCountOptions[1],
+            whoStarts: localStorage.getItem("whoStarts") || whoStartsOptions[0],
         }
         this.toggleShowWhoModal = this.toggleShowWhoModal.bind(this)
         this.toggleShowGamesModal = this.toggleShowGamesModal.bind(this)
         this.onSubmitGamesModal = this.onSubmitGamesModal.bind(this)
         this.onSubmitWhoModal = this.onSubmitWhoModal.bind(this)
+        this.handlePlayerOneChange = this.handlePlayerOneChange.bind(this)
+        this.handlePlayerTwoChange = this.handlePlayerTwoChange.bind(this)
     }
 
     toggleShowWhoModal() {
@@ -43,9 +45,22 @@ class Page2 extends React.Component {
         this.setState({whoStarts: value, showWhoModal: false})
     }
 
+    handlePlayerOneChange(value){
+        localStorage.setItem('player1', value)
+        this.setState({playerOne: value})
+    }
+
+    handlePlayerTwoChange(value){
+        localStorage.setItem('player2', value)
+        this.setState({playerTwo: value})
+    }
+
     componentDidMount(){
-        localStorage.setItem('whoStarts', whoStartsOptions[0])
-        localStorage.setItem('gamesCount', gamesCountOptions[1])
+        const { playerOne, playerTwo, gamesCount, whoStarts } = this.state
+        localStorage.setItem('gamesCount', gamesCount)
+        localStorage.setItem('whoStarts', whoStarts)
+        localStorage.setItem('player1', playerOne)
+        localStorage.setItem('player2', playerTwo)
     }
 
     render(){
@@ -56,8 +71,8 @@ class Page2 extends React.Component {
                 <TopNavBar prevPagePath="/"></TopNavBar>
                 <div className="main">
                     <div className="cardsContainer">
-                        <SettingCard class="avatar01" imgSrc="avatar01.png" imgAlt="avatar01" label="Player 01" value={playerOne} isPlayer={true} ></SettingCard>
-                        <SettingCard class="avatar02" imgSrc="avatar02.png" imgAlt="avatar02" label="Player 02" value={playerTwo} isPlayer={true} ></SettingCard>
+                        <SettingCard class="avatar01" imgSrc="avatar01.png" imgAlt="avatar01" label="Player 01" value={playerOne} isPlayer={true} handleOnChange={this.handlePlayerOneChange} ></SettingCard>
+                        <SettingCard class="avatar02" imgSrc="avatar02.png" imgAlt="avatar02" label="Player 02" value={playerTwo} isPlayer={true} handleOnChange={this.handlePlayerTwoChange} ></SettingCard>
                         <SettingCard class="winner" imgSrc="winner.png" imgAlt="winner" label="Number of games" value={gamesCount} handleOnClick={()=>this.toggleShowGamesModal} ></SettingCard>
                         <SettingCard class="run" imgSrc="run.png" imgAlt="run" label="Who starts" value={whoStarts} handleOnClick={()=>this.toggleShowWhoModal} ></SettingCard>
                     </div>

@@ -20,9 +20,9 @@ class Modal extends React.Component {
     }
 
     render(){
-        const { title, options, onCancel, handleSubmit, currValue } = this.props
+        const { title, options, onCancel, handleSubmit } = this.props
         const { selected } = this.state
-        
+
         return(
             <div className="modalContainer">
                 <div className="modal">

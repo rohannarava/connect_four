@@ -2,6 +2,10 @@ import React from 'react'
 import './SettingCard.css'
 
 function SettingCard(props) {
+    const handleOnChange = (e) =>{
+        console.log(e.target.value)
+        props.handleOnChange(e.target.value)
+    }
     return(
         <div className={`settingCard ${props.class}`}>
             <div className="badge">
@@ -10,7 +14,7 @@ function SettingCard(props) {
             <div className="inputContainer">
                 <label> {props.label} </label>
                 {props.isPlayer ? 
-                    <input className={props.class} value={props.value} ></input>
+                    <input className={props.class} value={props.value} onChange={handleOnChange}></input>
                     :
                     <div className={`nonPlayer ${props.class}`} onClick={props.handleOnClick()}> {props.value} </div>
                 }
