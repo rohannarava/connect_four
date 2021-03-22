@@ -322,7 +322,7 @@ class Page3 extends React.Component {
                 nextPlayer = currentPlayer
             }
         }
-        this.setState({ current: JSON.parse(JSON.stringify(arr)), currentGame: currentGame, winner: 0, currentPlayer: nextPlayer })
+        this.setState({ current: JSON.parse(JSON.stringify(arr)), currentGame: currentGame, winner: 0, currentPlayer: nextPlayer, moves:[] })
     }
 
     playAgain = () => {
@@ -338,7 +338,8 @@ class Page3 extends React.Component {
                 whoStarts: localStorage.getItem('whoStarts'),
                 currentGame: 1,
                 player1: localStorage.getItem('player1'),
-                player2: localStorage.getItem('player2')
+                player2: localStorage.getItem('player2'),
+                moves: []
             }
         )
     }
