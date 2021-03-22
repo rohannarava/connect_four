@@ -192,10 +192,17 @@ class Page3 extends React.Component {
         }
     }
 
-    setElement = (ind, subInd) => {
+    setElement = (index, subInd) => {
         let { gamesCount, playerOneWins, playerTwoWins, moves } = this.state
-        moves.push(ind, subInd)
         let arr = this.state.current
+        let ind
+        for(let i=7;i>=0;i--){
+            if(arr[i][subInd].value===0){
+                ind=i;
+                break;
+            }
+        }
+        moves.push(ind, subInd)
         const player = this.state.currentPlayer
         arr[ind][subInd].value = player
         let max = 0
