@@ -173,3 +173,17 @@
     color: #CC0000;
     cursor: pointer;
 }
+
+@media screen and (max-width: 1289px){
+    .pageThree .main {
+        width: 840px;
+    }
+    .scoreCardContainer {
+        top: 840px;
+        left: 0;
+        z-index: 1;
+    }
+    .scoreCard {
+        margin: auto;
+    }
+}

@@ -29,7 +29,8 @@ class Page3 extends React.Component {
             whoStarts: null,
             currentGame: 1,
             player1: null,
-            player2: null
+            player2: null,
+            moves: []
         }
         this.getHorCount = this.getHorCount.bind(this)
         this.getVerCount = this.getVerCount.bind(this)
@@ -192,7 +193,8 @@ class Page3 extends React.Component {
     }
 
     setElement = (ind, subInd) => {
-        let { gamesCount, playerOneWins, playerTwoWins } = this.state
+        let { gamesCount, playerOneWins, playerTwoWins, moves } = this.state
+        moves.push(ind, subInd)
         let arr = this.state.current
         const player = this.state.currentPlayer
         arr[ind][subInd].value = player
@@ -239,7 +241,7 @@ class Page3 extends React.Component {
             playerTwoWins++;
         }
 
-        this.setState({current: arr, currentPlayer:((player%2)+1), winner: winner, tourWinner:tourWinner, playerOneWins: playerOneWins, playerTwoWins: playerTwoWins })
+        this.setState({current: arr, currentPlayer:((player%2)+1), winner: winner, tourWinner:tourWinner, playerOneWins: playerOneWins, playerTwoWins: playerTwoWins, moves: moves })
     }
 
     getElements = () => {
@@ -334,6 +336,21 @@ class Page3 extends React.Component {
         )
     }
 
+    undoStep = () => {
+        const { current, moves, currentPlayer } = this.state
+        if(moves.length===0){
+            alert("No steps to undo")
+        }else {
+            let subInd = moves.pop()
+            let ind = moves.pop()
+            current[ind][subInd] = {
+                value: 0,
+                highlight: false
+            }
+            this.setState({ current:current, moves: moves, currentPlayer:((currentPlayer%2)+1) })
+        }
+    }
+
     componentDidMount(){
         const games = localStorage.getItem('gamesCount')
         const who = localStorage.getItem('whoStarts')
@@ -366,7 +383,7 @@ class Page3 extends React.Component {
                             <hr></hr>
                             <div className="primaryButtonContainer">
                                 {tourWinner===0 && winner>0 && <button className="primaryButton" onClick={()=> this.nextGame()} > Next Game </button>}
-                                {tourWinner===0 && winner===0 && <button className="primaryButton" onClick={()=>{}} > Undo Step </button>}
+                                {tourWinner===0 && winner===0 && <button className="primaryButton" onClick={()=> this.undoStep()} > Undo Step </button>}
                                 {tourWinner>0 && <button className="primaryButton" onClick={()=>this.playAgain()} > Play Again </button>}
                             </div>
                             <div className="primaryButtonContainer">
