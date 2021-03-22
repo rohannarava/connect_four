@@ -3,7 +3,6 @@ import './SettingCard.css'
 
 function SettingCard(props) {
     const handleOnChange = (e) =>{
-        console.log(e.target.value)
         props.handleOnChange(e.target.value)
     }
     return(

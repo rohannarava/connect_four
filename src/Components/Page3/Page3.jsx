@@ -345,7 +345,6 @@ class Page3 extends React.Component {
     render(){
         const { winner, tourWinner, gamesCount, currentGame, player1, player2, playerOneWins, playerTwoWins, currentPlayer } = this.state
         const { history } = this.props
-        console.log('state', this.state)
         return(
             <div className="pageThree">
                 <TopNavBar prevPagePath="/settings"></TopNavBar>
