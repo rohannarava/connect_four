@@ -5,8 +5,13 @@ import './Page1.css'
 function Page1(props) {
     return(
         <div className="pageOne" >
+            <div className="pageOneHeading">
+                <div className="title"> Connect Four! </div>
+                <div className="caption"> Play with other players around the world. </div>
+            </div>
             <div className="main">
                 <div className="play">
+                    <img className="playIcon" src="play.svg" alt="play"></img>
                     <div>PLAY</div>   
                 </div>
                 <div className="optionsContainer">
@@ -23,6 +28,11 @@ function Page1(props) {
             <div className="fourInarow">
                 <img className="fourInarowImg" src="4inarow.png" alt="4inarow"></img>
             </div>
+            <div className="footer">
+                <div className="footerMessage"> © 2020 </div>
+            </div>
+            <div className="pageOneCircle"></div>
+            <div className="pageOneCircleTwo"></div>
         </div>
     )
 }
