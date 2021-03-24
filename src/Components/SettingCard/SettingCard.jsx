@@ -17,7 +17,7 @@ function SettingCard(props) {
     }
     return(
         <div className={`settingCard ${props.class}`}>
-            <div className="badge" onClick={props.isPlayer?()=>{inputEl.current.click()}:()=>{}}>
+            <div className={props.isPlayer?"badge pointer":"badge"} onClick={props.isPlayer?()=>{inputEl.current.click()}:()=>{}}>
                 <img className="settingImg" src={image} alt={props.imgAlt}></img>
             </div>
             <div className="inputContainer">

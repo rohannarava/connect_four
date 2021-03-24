@@ -81,7 +81,7 @@ hr.settingCardHr {
     margin-top: 10px;
 }
 
-.nonPlayer {
+.nonPlayer, .pointer {
     cursor: pointer;
 }
 
