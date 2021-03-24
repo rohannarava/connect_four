@@ -340,11 +340,11 @@ class Page3 extends React.Component {
                 tourWinner: 0,
                 playerOneWins: 0,
                 playerTwoWins: 0,
-                gamesCount: parseInt(localStorage.getItem('gamesCount')),
-                whoStarts: localStorage.getItem('whoStarts'),
+                gamesCount: parseInt(localStorage.getItem('gamesCount')) || 5,
+                whoStarts: localStorage.getItem('whoStarts') || "Alternative turn",
                 currentGame: 1,
-                player1: localStorage.getItem('player1'),
-                player2: localStorage.getItem('player2'),
+                player1: localStorage.getItem('player1') || "Player 1",
+                player2: localStorage.getItem('player2') || "Player 2",
                 moves: []
             }
         )
@@ -376,10 +376,10 @@ class Page3 extends React.Component {
     }
 
     componentDidMount(){
-        const games = localStorage.getItem('gamesCount')
-        const who = localStorage.getItem('whoStarts')
-        const player1 = localStorage.getItem('player1')
-        const player2 = localStorage.getItem('player2')
+        const games = localStorage.getItem('gamesCount') || 5
+        const who = localStorage.getItem('whoStarts') || "Alternative turn"
+        const player1 = localStorage.getItem('player1') || "Player 1"
+        const player2 = localStorage.getItem('player2') || "Player 2"
         this.setState({gamesCount: parseInt(games), whoStarts: who, player1: player1, player2: player2})
     }
 
