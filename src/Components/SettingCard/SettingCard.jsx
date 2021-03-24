@@ -1,14 +1,24 @@
-import React from 'react'
+import React, { useState, useRef } from 'react'
 import './SettingCard.css'
 
 function SettingCard(props) {
+    const [image, setImage] = useState(props.imgSrc)
+    const inputEl = useRef(null)
+    
     const handleOnChange = (e) =>{
         props.handleOnChange(e.target.value)
     }
+    function onChangeImage (e){
+        if (e.target.files && e.target.files[0] && e.target.files[0].type.startsWith('image/')) {
+            const img = URL.createObjectURL(e.target.files[0])
+            localStorage.setItem(`${props.class}`, img)
+            setImage(img)
+        }
+    }
     return(
         <div className={`settingCard ${props.class}`}>
-            <div className="badge">
-                <img className="settingImg" src={props.imgSrc} alt={props.imgAlt}></img>
+            <div className="badge" onClick={props.isPlayer?()=>{inputEl.current.click()}:()=>{}}>
+                <img className="settingImg" src={image} alt={props.imgAlt}></img>
             </div>
             <div className="inputContainer">
                 <label> {props.label} </label>
@@ -17,6 +27,9 @@ function SettingCard(props) {
                     :
                     <div className={`nonPlayer ${props.class}`} onClick={props.handleOnClick()}> {props.value} </div>
                 }
+            </div>
+            <div className="avatarImage">
+                <input ref={inputEl} type="file" id="img" name="img" accept="image/*" onChange={(e)=>onChangeImage(e)} />
             </div>
             <hr className="settingCardHr"></hr>
         </div>

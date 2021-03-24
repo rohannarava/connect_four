@@ -192,42 +192,9 @@
     }
 }
 
-@keyframes example {
-    0%   { top:0px;}
-    100% { top:0px;}
-}
-
-@keyframes example1 {
-    0%   { top:0px;}
-    100% { top:100px;}
-}
-
-@keyframes example2 {
-    0%   { top:0px;}
-    100% { top:200px;}
-}
-
-@keyframes example3 {
-    0%   { top:0px;}
-    100% { top:300px;}
-}
-
-@keyframes example4 {
-    0%   { top:0px;}
-    100% { top:400px;}
-}
-
-@keyframes example5 {
-    0%   { top:0px;}
-    100% { top:500px;}
-}
-
-@keyframes example6 {
-    0%   { top:0px;}
-    100% { top:600px;}
-}
-
-@keyframes example7 {
-    0%   { top:0px;}
-    100% { top:700px;}
+@for $i from 0 through 7{
+    @keyframes example#{$i} {
+        0%   { top:0px;}
+        100% { top: calc(#{$i}*100px + 21px);}
+    }
 }

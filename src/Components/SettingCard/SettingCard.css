@@ -26,6 +26,7 @@
 
 .settingImg {
     width: 50px;
+    height: 60px;
 }
 
 .avatar01 {
@@ -86,4 +87,8 @@ hr.settingCardHr {
 
 button{
     cursor: pointer;
+}
+
+.avatarImage {
+    display: none;
 }

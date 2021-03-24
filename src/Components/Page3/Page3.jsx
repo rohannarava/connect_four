@@ -2,7 +2,7 @@ import React from 'react'
 import { withRouter } from 'react-router-dom';
 import TopNavBar from '../TopNavBar/TopNavBar'
 import PlayerCard from '../PlayerCard/PlayerCard'
-import './Page3.css'
+import './Page3.scss'
 
 let arr = [];
 for(let i=0;i<8;i++){
@@ -248,6 +248,12 @@ class Page3 extends React.Component {
             playerTwoWins++;
         }
 
+        const audioElement = document.querySelector('audio');
+        setTimeout(()=>{
+            console.log('audio')
+            audioElement.play()
+        }, (ind*500))
+
         this.setState({current: arr, currentPlayer:((player%2)+1), winner: winner, tourWinner:tourWinner, playerOneWins: playerOneWins, playerTwoWins: playerTwoWins, moves: moves })
     }
 
@@ -263,7 +269,7 @@ class Page3 extends React.Component {
                                     return(
                                         <div className={subEl.highlight?"circleHighlight":"circle"}>
                                             <div className={subEl.highlight?"innerCircleHighlight":"innerCircle"}>
-                                                <div className={`playerOneCircle`} style={{animationName:`example${ind}`, animationDuration:`2s`}}>
+                                                <div className={`playerOneCircle`} style={{animationName:`example${ind}`, animationDuration:`${ind*0.5}s`}}>
                                                     <img src="avatar01.png" alt="avatar01"></img>
                                                 </div>
                                             </div>
@@ -273,7 +279,7 @@ class Page3 extends React.Component {
                                     return(
                                         <div className={subEl.highlight?"circleHighlight":"circle"}>
                                             <div className={subEl.highlight?"innerCircleHighlight":"innerCircle"}>
-                                                <div className="playerTwoCircle" style={{animationName:`example${ind}`, animationDuration:`2s`}}>
+                                                <div className="playerTwoCircle" style={{animationName:`example${ind}`, animationDuration:`${ind*0.5}s`}}>
                                                     <img src="avatar02.png" alt="avatar02"></img>
                                                 </div>
                                             </div>
@@ -410,6 +416,7 @@ class Page3 extends React.Component {
                         </div>
                     </div>
                 </div>
+                <audio src="coin-drop-1.mp3"></audio>
             </div>
         )
     }
