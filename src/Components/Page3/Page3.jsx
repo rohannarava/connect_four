@@ -263,7 +263,7 @@ class Page3 extends React.Component {
                                     return(
                                         <div className={subEl.highlight?"circleHighlight":"circle"}>
                                             <div className={subEl.highlight?"innerCircleHighlight":"innerCircle"}>
-                                                <div className="playerOneCircle">
+                                                <div className={`playerOneCircle`} style={{animationName:`example${ind}`, animationDuration:`2s`}}>
                                                     <img src="avatar01.png" alt="avatar01"></img>
                                                 </div>
                                             </div>
@@ -273,7 +273,7 @@ class Page3 extends React.Component {
                                     return(
                                         <div className={subEl.highlight?"circleHighlight":"circle"}>
                                             <div className={subEl.highlight?"innerCircleHighlight":"innerCircle"}>
-                                                <div className="playerTwoCircle">
+                                                <div className="playerTwoCircle" style={{animationName:`example${ind}`, animationDuration:`2s`}}>
                                                     <img src="avatar02.png" alt="avatar02"></img>
                                                 </div>
                                             </div>
@@ -281,7 +281,7 @@ class Page3 extends React.Component {
                                     )
                                 default:
                                 return(
-                                    <div className="circle" onClick={winner===0?()=>this.setElement(ind, subInd):()=>{}}>
+                                    <div className="circle" onClick={winner===0?()=>this.setElement(ind, subInd):()=>{}} onDrop={winner===0?()=>this.setElement(ind, subInd):()=>{}} onDragOver={this.allowDrop}>
                                         <div className="innerCircle"> </div>
                                     </div>
                                 )
@@ -342,6 +342,16 @@ class Page3 extends React.Component {
                 moves: []
             }
         )
+    }
+
+    drop (ev) {
+        ev.preventDefault();
+        var data = ev.dataTransfer.getData("text");
+        ev.target.appendChild(document.getElementById(data));
+    }
+
+    allowDrop (ev) {
+        ev.preventDefault();
     }
 
     undoStep = () => {
