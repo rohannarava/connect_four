@@ -259,8 +259,8 @@ class Page3 extends React.Component {
 
     getElements = () => {
         const { current, winner } = this.state
-        const avatar1 = localStorage.getItem('avatar01') || "avatar01.png"
-        const avatar2 = localStorage.getItem('avatar02') || "avatar02.png"
+        const avatar1 = sessionStorage.getItem('avatar01') || "avatar01.png"
+        const avatar2 = sessionStorage.getItem('avatar02') || "avatar02.png"
         return(
             current.map((el, ind)=>{
                 return(
@@ -342,11 +342,11 @@ class Page3 extends React.Component {
                 tourWinner: 0,
                 playerOneWins: 0,
                 playerTwoWins: 0,
-                gamesCount: parseInt(localStorage.getItem('gamesCount')) || 5,
-                whoStarts: localStorage.getItem('whoStarts') || "Alternative turn",
+                gamesCount: parseInt(sessionStorage.getItem('gamesCount')) || 5,
+                whoStarts: sessionStorage.getItem('whoStarts') || "Alternative turn",
                 currentGame: 1,
-                player1: localStorage.getItem('player1') || "Player 1",
-                player2: localStorage.getItem('player2') || "Player 2",
+                player1: sessionStorage.getItem('player1') || "Player 1",
+                player2: sessionStorage.getItem('player2') || "Player 2",
                 moves: []
             }
         )
@@ -378,10 +378,10 @@ class Page3 extends React.Component {
     }
 
     componentDidMount(){
-        const games = localStorage.getItem('gamesCount') || 5
-        const who = localStorage.getItem('whoStarts') || "Alternative turn"
-        const player1 = localStorage.getItem('player1') || "Player 1"
-        const player2 = localStorage.getItem('player2') || "Player 2"
+        const games = sessionStorage.getItem('gamesCount') || 5
+        const who = sessionStorage.getItem('whoStarts') || "Alternative turn"
+        const player1 = sessionStorage.getItem('player1') || "Player 1"
+        const player2 = sessionStorage.getItem('player2') || "Player 2"
         
         this.setState({gamesCount: parseInt(games), whoStarts: who, player1: player1, player2: player2})
     }
@@ -389,8 +389,8 @@ class Page3 extends React.Component {
     render(){
         const { winner, tourWinner, gamesCount, currentGame, player1, player2, playerOneWins, playerTwoWins, currentPlayer } = this.state
         const { history } = this.props
-        const avatar1 = localStorage.getItem('avatar01') || "avatar01.png"
-        const avatar2 = localStorage.getItem('avatar02') || "avatar02.png"
+        const avatar1 = sessionStorage.getItem('avatar01') || "avatar01.png"
+        const avatar2 = sessionStorage.getItem('avatar02') || "avatar02.png"
         return(
             <div className="pageThree">
                 <TopNavBar prevPagePath="/settings"></TopNavBar>

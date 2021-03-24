@@ -14,10 +14,10 @@ class Page2 extends React.Component {
         this.state = {
             showWhoModal: false,
             showGamesModal: false,
-            playerOne: localStorage.getItem("player1") || "Player 1",
-            playerTwo: localStorage.getItem("player2") || "Player 2",
-            gamesCount: localStorage.getItem("gamesCount") || gamesCountOptions[1],
-            whoStarts: localStorage.getItem("whoStarts") || whoStartsOptions[0],
+            playerOne: sessionStorage.getItem("player1") || "Player 1",
+            playerTwo: sessionStorage.getItem("player2") || "Player 2",
+            gamesCount: sessionStorage.getItem("gamesCount") || gamesCountOptions[1],
+            whoStarts: sessionStorage.getItem("whoStarts") || whoStartsOptions[0],
         }
         this.toggleShowWhoModal = this.toggleShowWhoModal.bind(this)
         this.toggleShowGamesModal = this.toggleShowGamesModal.bind(this)
@@ -36,38 +36,38 @@ class Page2 extends React.Component {
     }
 
     onSubmitGamesModal(value) {
-        localStorage.setItem('gamesCount', value)
+        sessionStorage.setItem('gamesCount', value)
         this.setState({gamesCount: value, showGamesModal: false})
     }
 
     onSubmitWhoModal(value){
-        localStorage.setItem('whoStarts', value)
+        sessionStorage.setItem('whoStarts', value)
         this.setState({whoStarts: value, showWhoModal: false})
     }
 
     handlePlayerOneChange(value){
-        localStorage.setItem('player1', value)
+        sessionStorage.setItem('player1', value)
         this.setState({playerOne: value})
     }
 
     handlePlayerTwoChange(value){
-        localStorage.setItem('player2', value)
+        sessionStorage.setItem('player2', value)
         this.setState({playerTwo: value})
     }
 
     componentDidMount(){
         const { playerOne, playerTwo, gamesCount, whoStarts } = this.state
-        localStorage.setItem('gamesCount', gamesCount)
-        localStorage.setItem('whoStarts', whoStarts)
-        localStorage.setItem('player1', playerOne)
-        localStorage.setItem('player2', playerTwo)
+        sessionStorage.setItem('gamesCount', gamesCount)
+        sessionStorage.setItem('whoStarts', whoStarts)
+        sessionStorage.setItem('player1', playerOne)
+        sessionStorage.setItem('player2', playerTwo)
     }
 
     render(){
         const { playerOne, playerTwo, gamesCount, whoStarts, showGamesModal,  showWhoModal } = this.state
         const { history } = this.props
-        const avatar1 = localStorage.getItem('avatar01') || "avatar01.png"
-        const avatar2 = localStorage.getItem('avatar02') || "avatar02.png"
+        const avatar1 = sessionStorage.getItem('avatar01') || "avatar01.png"
+        const avatar2 = sessionStorage.getItem('avatar02') || "avatar02.png"
 
         return(
             <div className="pageTwo">

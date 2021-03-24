@@ -11,7 +11,7 @@ function SettingCard(props) {
     function onChangeImage (e){
         if (e.target.files && e.target.files[0] && e.target.files[0].type.startsWith('image/')) {
             const img = URL.createObjectURL(e.target.files[0])
-            localStorage.setItem(`${props.class}`, img)
+            sessionStorage.setItem(`${props.class}`, img)
             setImage(img)
         }
     }
