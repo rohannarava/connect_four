@@ -66,13 +66,16 @@ class Page2 extends React.Component {
     render(){
         const { playerOne, playerTwo, gamesCount, whoStarts, showGamesModal,  showWhoModal } = this.state
         const { history } = this.props
+        const avatar1 = localStorage.getItem('avatar01') || "avatar01.png"
+        const avatar2 = localStorage.getItem('avatar02') || "avatar02.png"
+
         return(
             <div className="pageTwo">
                 <TopNavBar prevPagePath="/"></TopNavBar>
                 <div className="main">
                     <div className="cardsContainer">
-                        <SettingCard class="avatar01" imgSrc="avatar01.png" imgAlt="avatar01" label="Player 01" value={playerOne} isPlayer={true} handleOnChange={this.handlePlayerOneChange} ></SettingCard>
-                        <SettingCard class="avatar02" imgSrc="avatar02.png" imgAlt="avatar02" label="Player 02" value={playerTwo} isPlayer={true} handleOnChange={this.handlePlayerTwoChange} ></SettingCard>
+                        <SettingCard class="avatar01" imgSrc={avatar1} imgAlt="avatar01" label="Player 01" value={playerOne} isPlayer={true} handleOnChange={this.handlePlayerOneChange} ></SettingCard>
+                        <SettingCard class="avatar02" imgSrc={avatar2} imgAlt="avatar02" label="Player 02" value={playerTwo} isPlayer={true} handleOnChange={this.handlePlayerTwoChange} ></SettingCard>
                         <SettingCard class="winner" imgSrc="winner.png" imgAlt="winner" label="Number of games" value={gamesCount} handleOnClick={()=>this.toggleShowGamesModal} ></SettingCard>
                         <SettingCard class="run" imgSrc="run.png" imgAlt="run" label="Who starts" value={whoStarts} handleOnClick={()=>this.toggleShowWhoModal} ></SettingCard>
                     </div>

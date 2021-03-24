@@ -259,6 +259,8 @@ class Page3 extends React.Component {
 
     getElements = () => {
         const { current, winner } = this.state
+        const avatar1 = localStorage.getItem('avatar01') || "avatar01.png"
+        const avatar2 = localStorage.getItem('avatar02') || "avatar02.png"
         return(
             current.map((el, ind)=>{
                 return(
@@ -270,7 +272,7 @@ class Page3 extends React.Component {
                                         <div className={subEl.highlight?"circleHighlight":"circle"}>
                                             <div className={subEl.highlight?"innerCircleHighlight":"innerCircle"}>
                                                 <div className={`playerOneCircle`} style={{animationName:`example${ind}`, animationDuration:`${ind*0.5}s`}}>
-                                                    <img src="avatar01.png" alt="avatar01"></img>
+                                                    <img src={avatar1} alt="avatar01"></img>
                                                 </div>
                                             </div>
                                         </div>
@@ -280,7 +282,7 @@ class Page3 extends React.Component {
                                         <div className={subEl.highlight?"circleHighlight":"circle"}>
                                             <div className={subEl.highlight?"innerCircleHighlight":"innerCircle"}>
                                                 <div className="playerTwoCircle" style={{animationName:`example${ind}`, animationDuration:`${ind*0.5}s`}}>
-                                                    <img src="avatar02.png" alt="avatar02"></img>
+                                                    <img src={avatar2} alt="avatar02"></img>
                                                 </div>
                                             </div>
                                         </div>
@@ -380,12 +382,15 @@ class Page3 extends React.Component {
         const who = localStorage.getItem('whoStarts') || "Alternative turn"
         const player1 = localStorage.getItem('player1') || "Player 1"
         const player2 = localStorage.getItem('player2') || "Player 2"
+        
         this.setState({gamesCount: parseInt(games), whoStarts: who, player1: player1, player2: player2})
     }
 
     render(){
         const { winner, tourWinner, gamesCount, currentGame, player1, player2, playerOneWins, playerTwoWins, currentPlayer } = this.state
         const { history } = this.props
+        const avatar1 = localStorage.getItem('avatar01') || "avatar01.png"
+        const avatar2 = localStorage.getItem('avatar02') || "avatar02.png"
         return(
             <div className="pageThree">
                 <TopNavBar prevPagePath="/settings"></TopNavBar>
@@ -402,8 +407,8 @@ class Page3 extends React.Component {
                             {winner>0 && <div className="congrats"> Congratulation! </div>}
                             {tourWinner===0 && winner>0 && <div className="message"> {winner===1?player1:player2}, you won Game {currentGame} </div>}
                             {tourWinner>0 && <div className="message"> {tourWinner===1?player1:player2}, you won tournament </div>}
-                            <PlayerCard class="avatar01" imgSrc="avatar01.png" imgAlt="avatar01" label="Player 01" name={player1} score={playerOneWins} current={currentPlayer===1 && winner===0} ></PlayerCard>
-                            <PlayerCard class="avatar02" imgSrc="avatar02.png" imgAlt="avatar02" label="Player 02" name={player2} score={playerTwoWins} current={currentPlayer===2 && winner===0} ></PlayerCard>
+                            <PlayerCard class="avatar01" imgSrc={avatar1} imgAlt="avatar01" label="Player 01" name={player1} score={playerOneWins} current={currentPlayer===1 && winner===0} ></PlayerCard>
+                            <PlayerCard class="avatar02" imgSrc={avatar2} imgAlt="avatar02" label="Player 02" name={player2} score={playerTwoWins} current={currentPlayer===2 && winner===0} ></PlayerCard>
                             <hr></hr>
                             <div className="primaryButtonContainer">
                                 {tourWinner===0 && winner>0 && <button className="primaryButton" onClick={()=> this.nextGame()} > Next Game </button>}
